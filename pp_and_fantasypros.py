@@ -3,9 +3,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.firefox import GeckoDriverManager
 
-URL = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
-XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
-@@ -18,9 +19,10 @@
+URL = 'https://secure.fantasypros.com/accounts/login/'
+
 
 firefoxOptions = Options()
 firefoxOptions.add_argument("--headless")
@@ -15,7 +14,8 @@ driver = webdriver.Firefox(
     service=Service("/home/appuser/.conda/bin/geckodriver"),
     service=service,
 )
-driver.get('https://secure.fantasypros.com/accounts/login/')
+
+driver.get(url)
 Ωtime.sleep(1)
 driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div[2]/form/input[2]').send_keys('thebtrain@hotmail.com')
 time.sleep(1)
