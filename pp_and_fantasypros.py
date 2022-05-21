@@ -1,20 +1,29 @@
-from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.firefox import GeckoDriverManager
+from selenium import webdriver
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome('chromedriver',chrome_options=chrome_options)
 
-URL = 'https://secure.fantasypros.com/accounts/login/'
+from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.options import Options
+from bs4 import BeautifulSoup
+from csv import writer
+import time
+import datetime
+
+def to_csv(data_lst):
+    with open(f'fp_proj.csv', 'a+', newline='', encoding='utf-8') as write_obj:
+        csv_writer = writer(write_obj)
+        csv_writer.writerow(data_lst)
 
 
-firefoxOptions = Options()
-firefoxOptions.add_argument("--headless")
-service = Service(GeckoDriverManager().install())
-driver = webdriver.Firefox(
-    options=firefoxOptions,
-    service=Service("/home/appuser/.conda/bin/geckodriver")
-)
+options = Options()
+options.add_argument('--incognito')
+options.add_argument("--headless")
+#driver = Chrome(options=options)
 
-driver.get(url)
+driver.get('https://secure.fantasypros.com/accounts/login/')
 Ωtime.sleep(1)
 driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div[2]/form/input[2]').send_keys('thebtrain@hotmail.com')
 time.sleep(1)
