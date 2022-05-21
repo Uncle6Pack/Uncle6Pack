@@ -1,5 +1,3 @@
-!apt-get update 
-!apt install chromium-chromedriver
 
 from selenium import webdriver
 chrome_options = webdriver.ChromeOptions()
